@@ -10,25 +10,25 @@ import org.apache.log4j.PatternLayout;
 import org.apache.log4j.RollingFileAppender;
 
 public class LoggerUtils {
-	
+
 	public static Logger getLogger(Class<?> clazz) {
 
-		Logger logger = Logger.getLogger(clazz); // Éú³ÉĞÂµÄLogger
-		logger.removeAllAppenders(); // Çå¿ÕAppender£¬ÌØ„eÊÇ²»ÏëÊ¹ÓÃ¬F´æŒÀı•rÒ»¶¨Òª³õÆÚ»¯
-		logger.setLevel(Level.DEBUG); // Éè¶¨Logger¼‰„e¡£
-		logger.setAdditivity(true); // Éè¶¨ÊÇ·ñ¼Ì³Ğ¸¸Logger¡£Ä¬ÈÏÎªtrue£¬¼Ì³ĞrootÊä³ö£»Éè¶¨falseºó½«²»³öÊéroot¡£
+		Logger logger = Logger.getLogger(clazz); // ç”Ÿæˆæ–°çš„Logger
+		logger.removeAllAppenders(); // æ¸…ç©ºAppenderï¼Œç‰¹åˆ¥æ˜¯ä¸æƒ³ä½¿ç”¨ç¾å­˜å¯¦ä¾‹æ™‚ä¸€å®šè¦åˆæœŸåŒ–
+		logger.setLevel(Level.DEBUG); // è®¾å®šLoggerç´šåˆ¥ã€‚
+		logger.setAdditivity(true); // è®¾å®šæ˜¯å¦ç»§æ‰¿çˆ¶Loggerã€‚é»˜è®¤ä¸ºtrueï¼Œç»§æ‰¿rootè¾“å‡ºï¼›è®¾å®šfalseåå°†ä¸å‡ºä¹¦rootã€‚
 
-		FileAppender appender = new RollingFileAppender(); // Éú³ÉĞÂµÄAppender
+		FileAppender appender = new RollingFileAppender(); // ç”Ÿæˆæ–°çš„Appender
 		PatternLayout layout = new PatternLayout();
-		layout.setConversionPattern("[%d{yyyy-MM-dd HH:mm:ss}] %p %l : %m%n"); // logµÄÊä³öĞÎÊ½
+		layout.setConversionPattern("[%d{yyyy-MM-dd HH:mm:ss}] %p %l : %m%n"); // logçš„è¾“å‡ºå½¢å¼
 		appender.setLayout(layout);
 
-		appender.setFile("logs/" + getTime("yyyy-MM-dd") + ".log"); // logÊä³öÂ·¾¶
-		appender.setEncoding("UTF-8"); // logµÄ×Ö·û±àÂë
-		appender.setAppend(true); // ÈÕÖ¾ºÏ²¢·½Ê½£º true:ÔÚÒÑ´æÔÚlogÎÄ¼şºóÃæ×·¼Ó false:ĞÂlog¸²¸ÇÒÔÇ°µÄlog
-		appender.activateOptions(); // ÊÊÓÃµ±Ç°ÅäÖÃ
+		appender.setFile(getTime("yyyy-MM-dd") + ".log"); // logè¾“å‡ºè·¯å¾„
+		appender.setEncoding("UTF-8"); // logçš„å­—ç¬¦ç¼–ç 
+		appender.setAppend(true); // æ—¥å¿—åˆå¹¶æ–¹å¼ï¼š true:åœ¨å·²å­˜åœ¨logæ–‡ä»¶åé¢è¿½åŠ  false:æ–°logè¦†ç›–ä»¥å‰çš„log
+		appender.activateOptions(); // é€‚ç”¨å½“å‰é…ç½®
 
-		logger.addAppender(appender); // ½«ĞÂµÄAppender¼Óµ½LoggerÖĞ
+		logger.addAppender(appender); // å°†æ–°çš„AppenderåŠ åˆ°Loggerä¸­
 		return logger;
 	}
 
@@ -36,5 +36,5 @@ public class LoggerUtils {
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 		return sdf.format(new Date());
 	}
-	
+
 }

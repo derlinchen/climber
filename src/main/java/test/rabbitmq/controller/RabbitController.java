@@ -21,13 +21,14 @@ public class RabbitController {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("id", "1");
 		map.put("name", "pig");
-		//����key���͵���Ӧ�Ķ���
-		rabbitTemplate.convertAndSend(map);
+		//根据key发送到对应的队列
+		rabbitTemplate.convertAndSend("que_pig_key", map);
 		
 		map.put("id", "2");
 		map.put("name", "cat");
-		//����key���͵���Ӧ�Ķ���
-		rabbitTemplate.convertAndSend(map);
+		//根据key发送到对应的队列
+		rabbitTemplate.convertAndSend("que_cat_key", map);
+		
 	}
-	
+
 }

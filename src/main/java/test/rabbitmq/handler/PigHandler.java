@@ -11,14 +11,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class PigHandler implements MessageListener {
 
 	private static final ObjectMapper MAPPER = new ObjectMapper();
-	
-	@Override
+
 	public void onMessage(Message msg) {
 		try {
-			// msg����rabbitmq��������Ϣ����Ҫ��ͬѧ�Լ���ӡ��һ��
-			// ʹ��jackson����
+			// msg就是rabbitmq传来的消息，需要的同学自己打印看一眼
+			// 使用jackson解析
 			JsonNode jsonData = MAPPER.readTree(msg.getBody());
-			System.out.println("���ǿɰ���С��,�ҵ�id��" + jsonData.get("id").asText() + ",�ҵ�������" + jsonData.get("name").asText());
+			System.out.println("我是可爱的小猪,我的id是" + jsonData.get("id").asText() + ",我的名字是" + jsonData.get("name").asText());
 
 		} catch (IOException e) {
 			e.printStackTrace();

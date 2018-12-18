@@ -20,15 +20,15 @@
 	<rabbit:admin connection-factory="connectionFactory" />
  
 	<!-- 声明队列 -->
-	<rabbit:queue name="${rabbit.queue}" auto-declare="true" durable="true" />
+	<rabbit:queue name="queue" auto-declare="true" durable="true" />
  
 	<!-- 定义消费者 -->
-	<bean name="${rabbit.queue.handler}" class="test.handler.PigHandler" />
+	<bean name="queuehandler" class="com.climber.rabbitmq.handler.PigHandler" />
  
 	<!-- 定义消费者监听队列 -->
 	<rabbit:listener-container
 		connection-factory="connectionFactory">
-		<rabbit:listener ref="${rabbit.queue.handler}" queues="${rabbit.queue}" />
+		<rabbit:listener ref="queuehandler" queues="queue" />
 	</rabbit:listener-container>
  
 </beans>

@@ -1,4 +1,4 @@
-package test.rabbitmq.handler;
+package com.climber.rabbitmq.handler;
 
 import java.io.IOException;
 

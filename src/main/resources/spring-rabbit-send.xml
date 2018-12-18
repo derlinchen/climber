@@ -18,12 +18,12 @@
 	<rabbit:admin connection-factory="connectionFactory" />
  
 	<!-- 声明队列 -->
-	<rabbit:queue name="${rabbit.queue}" auto-declare="true" durable="true" />
+	<rabbit:queue name="queue" auto-declare="true" durable="true" />
  
 	<!-- 定义交换机绑定队列（路由模式） -->
 	<rabbit:direct-exchange name="IExchange" id="IExchange">
 		<rabbit:bindings>
-			<rabbit:binding queue="${rabbit.queue}" key="${rabbit.queue.key}" />
+			<rabbit:binding queue="queue" key="queuekey" />
 		</rabbit:bindings>
 	</rabbit:direct-exchange>
  

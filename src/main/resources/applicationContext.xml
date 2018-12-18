@@ -23,6 +23,8 @@
 	<!-- 配置redis -->
 	<import resource="spring-redis.xml"/>
 	
-<!--     <import resource="spring-rabbit-send.xml"/> -->
+    <import resource="spring-rabbit-send.xml"/>
+    
+    <import resource="spring-rabbit-recv.xml"/>
   
 </beans> 

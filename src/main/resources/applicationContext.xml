@@ -26,5 +26,7 @@
     <import resource="spring-rabbit-send.xml"/>
     
     <import resource="spring-rabbit-recv.xml"/>
+    
+<!--     <import resource="spring-mongodb.xml"/> -->
   
 </beans> 

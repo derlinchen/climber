@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 
 
 /**
- * 对象进行序列化的类
+ * 对象进行序列化的类，对象类要继承Serializable接口
  * @author Derlin
  *
  */

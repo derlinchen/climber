@@ -20,8 +20,8 @@ public class SerializeUtil {
 	 * @return
 	 */
 	public static byte[] serialize(Object obj) {
-		ObjectOutputStream oos = null;
 		ByteArrayOutputStream baos = null;
+		ObjectOutputStream oos = null;
 		try {
 			baos = new ByteArrayOutputStream();
 			oos = new ObjectOutputStream(baos);
@@ -51,8 +51,8 @@ public class SerializeUtil {
 	 * @return
 	 */
 	public static Object unserizlize(byte[] byt) {
-		ObjectInputStream ois = null;
 		ByteArrayInputStream bais = null;
+		ObjectInputStream ois = null;
 		try {
 			bais = new ByteArrayInputStream(byt);
 			ois = new ObjectInputStream(bais);
@@ -65,7 +65,6 @@ public class SerializeUtil {
 				if (ois != null) {
 					ois.close();
 				}
-				
 				if (bais != null) {
 					bais.close();
 				}

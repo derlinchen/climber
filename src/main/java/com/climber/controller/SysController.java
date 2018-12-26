@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 import org.apache.log4j.Logger;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,15 +31,11 @@ import com.climber.bean.SysRoleMenu;
 import com.climber.bean.SysUser;
 import com.climber.bean.TreePanel;
 import com.climber.bean.UserRole;
+import com.climber.service.JedisService;
 import com.climber.service.SysService;
 import com.climber.utils.LoggerUtils;
 import com.climber.utils.StringUtils;
 import com.climber.utils.ToolUtils;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
 
 @Controller
 @RequestMapping("/sys")
@@ -453,21 +452,19 @@ public class SysController extends BaseController {
 
 	// region JedisPool Methods
 
-	@Autowired
-	private JedisPool jedisPool;
+//	@Autowired
+//	private JedisPool jedisPool;
+	
+	@Resource
+	private JedisService jedisService;
 
 	@RequestMapping("/set")
 	public void set() {
-		try {
-			// 获取ShardedJedis对象
-			Jedis jedis = jedisPool.getResource();
-			// 存入键值对
-			jedis.set("key2", "hello jedis one");
-			// 回收ShardedJedis实例
-			jedis.close();
-		} catch (Exception e) {
-			logger.error(e);
-		}
+		jedisService.set("key2", "hello jedis one");
+		jedisService.append("key2", "ssss");
+		System.out.println(jedisService.get("key2"));
+		jedisService.del("key2");
+		System.out.println(jedisService.exists("key2"));
 	}
 
 	// endregion JedisPool Methods

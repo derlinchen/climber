@@ -53,8 +53,8 @@ public class SerializeUtil {
 	public static Object unserizlize(byte[] byt) {
 		ObjectInputStream ois = null;
 		ByteArrayInputStream bais = null;
-		bais = new ByteArrayInputStream(byt);
 		try {
+			bais = new ByteArrayInputStream(byt);
 			ois = new ObjectInputStream(bais);
 			Object obj = ois.readObject();
 			return obj;

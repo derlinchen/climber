@@ -31,7 +31,9 @@ import com.climber.bean.SysRoleMenu;
 import com.climber.bean.SysUser;
 import com.climber.bean.TreePanel;
 import com.climber.bean.UserRole;
+import com.climber.mongobean.Student;
 import com.climber.service.JedisService;
+import com.climber.service.MongoService;
 import com.climber.service.SysService;
 import com.climber.utils.LoggerUtils;
 import com.climber.utils.StringUtils;
@@ -458,7 +460,7 @@ public class SysController extends BaseController {
 	@Resource
 	private JedisService jedisService;
 
-	@RequestMapping("/set")
+	@RequestMapping("/redis")
 	public void set() {
 		jedisService.set("key2", "hello jedis one");
 		jedisService.append("key2", "ssss");
@@ -491,5 +493,21 @@ public class SysController extends BaseController {
 	}
 	
 	// endregion RabbitMQ Methods
+	
+	// region MongoDB Methods
+	
+	@Resource
+	private MongoService mongoService;
+	
+	@RequestMapping("/mongo")
+	public void setmongo() {
+		Student std = new Student("ss", "sdd");
+		mongoService.add(std);
+		Student std1 = new Student("ss", "sdd");
+		List<Student> stds = mongoService.findByCondition(std1, Student.class, false);
+		System.out.println(stds);
+	}
+	
+	// endregion MongoDB Methods
 
 }

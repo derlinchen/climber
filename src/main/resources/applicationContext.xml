@@ -28,5 +28,7 @@
     <import resource="spring-rabbit-recv.xml"/>
     
     <import resource="spring-mongodb.xml"/>
+    
+    <import resource="spring-elastic.xml"/>
   
 </beans> 

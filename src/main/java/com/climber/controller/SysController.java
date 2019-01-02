@@ -1,6 +1,7 @@
 package com.climber.controller;
 
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,7 +32,9 @@ import com.climber.bean.SysRoleMenu;
 import com.climber.bean.SysUser;
 import com.climber.bean.TreePanel;
 import com.climber.bean.UserRole;
-import com.climber.mongobean.Student;
+import com.climber.bean.mongo.Student;
+import com.climber.elastic.Stu;
+import com.climber.service.ElasticService;
 import com.climber.service.JedisService;
 import com.climber.service.MongoService;
 import com.climber.service.SysService;
@@ -461,7 +464,7 @@ public class SysController extends BaseController {
 	private JedisService jedisService;
 
 	@RequestMapping("/redis")
-	public void set() {
+	public void redis() {
 		jedisService.set("key2", "hello jedis one");
 		jedisService.append("key2", "ssss");
 		System.out.println(jedisService.get("key2"));
@@ -477,7 +480,7 @@ public class SysController extends BaseController {
 	private RabbitTemplate rabbitTemplate;
 	
 	@RequestMapping(value="rabbit",method=RequestMethod.GET)
-	public void test(){
+	public void rabbit(){
 		
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("id", "1");
@@ -500,7 +503,7 @@ public class SysController extends BaseController {
 	private MongoService mongoService;
 	
 	@RequestMapping("/mongo")
-	public void setmongo() {
+	public void mongo() {
 		Student std = new Student("ss", "sdd");
 		mongoService.add(std);
 		Student std1 = new Student("ss", "sdd");
@@ -509,5 +512,21 @@ public class SysController extends BaseController {
 	}
 	
 	// endregion MongoDB Methods
+	
+	// region Elastic Methods
+	
+	@Resource
+	private ElasticService elasticService;
+	
+	@RequestMapping("/elastic")
+	public void elastic() {
+		Stu st = new Stu(6L, "006", "小陈", new Date());
+		elasticService.createDocument(st);
+		Stu stu = elasticService.getByStuId("006");
+		System.out.println(stu.getStuName());
+	}
+	
+	
+	// endregion Elastic Methods
 
 }

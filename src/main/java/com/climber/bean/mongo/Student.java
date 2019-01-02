@@ -1,4 +1,4 @@
-package com.climber.mongobean;
+package com.climber.bean.mongo;
 
 public class Student {
 	

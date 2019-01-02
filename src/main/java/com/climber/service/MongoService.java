@@ -23,7 +23,7 @@ public interface MongoService {
 	 * 根据对象进行数据查询
 	 * @param obj 传递的对象
 	 * @param clazz 传递的类
-	 * @param up 是否排序
+	 * @param sort 升降序，true为升序，false为降序
 	 * @return
 	 */
 	<T> List<T> findByCondition(Object obj, Class<T> clazz, boolean sort);

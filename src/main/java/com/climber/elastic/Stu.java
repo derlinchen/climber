@@ -6,24 +6,29 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 @Document(indexName = "stu", type = "doc")
 public class Stu implements Serializable {
 
-	private static final long serialVersionUID = 566392553987979222L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Field
+	@Field(index=true, store = true, type = FieldType.Long)
 	private Long id;
 
-	@Field
+	@Field(index = true, analyzer = "ik_max_word", store = true, searchAnalyzer = "ik_smart", type = FieldType.Text)
 	private String stuId;
 
-	@Field
+	@Field(index = true, analyzer = "ik_max_word", store = true, searchAnalyzer = "ik_smart", type = FieldType.Text)
 	private String stuName;
 
-	@Field
+	@Field(index = true, store = true, type = FieldType.Date)
 	private Date createTime;
+	
+	@Field(index = true, analyzer = "ik_max_word", store = true, searchAnalyzer = "ik_smart", type = FieldType.Text)
+	private String sex;
+	
 
 	public Stu() {
 	}

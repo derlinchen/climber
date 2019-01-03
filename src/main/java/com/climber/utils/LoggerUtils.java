@@ -23,7 +23,7 @@ public class LoggerUtils {
 		layout.setConversionPattern("[%d{yyyy-MM-dd HH:mm:ss}] %p %l : %m%n"); // log的输出形式
 		appender.setLayout(layout);
 
-		appender.setFile(getTime("yyyy-MM-dd") + ".log"); // log输出路径
+		appender.setFile("/climber/" + getTime("yyyy-MM-dd") + ".log"); // log输出路径
 		appender.setEncoding("UTF-8"); // log的字符编码
 		appender.setAppend(true); // 日志合并方式： true:在已存在log文件后面追加 false:新log覆盖以前的log
 		appender.activateOptions(); // 适用当前配置

@@ -52,7 +52,7 @@ public class SysController extends BaseController {
 	private SysService sysService;
 
 	// region SysMenu Methods
-
+	
 	@RequestMapping("/getMenu")
 	public void getMenu(HttpServletRequest request, HttpServletResponse response, Model model, PrintWriter out, UserRole item) {
 		try {
@@ -457,9 +457,6 @@ public class SysController extends BaseController {
 
 	// region JedisPool Methods
 
-//	@Autowired
-//	private JedisPool jedisPool;
-	
 	@Resource
 	private JedisService jedisService;
 
@@ -528,5 +525,14 @@ public class SysController extends BaseController {
 	
 	
 	// endregion Elastic Methods
+	
+	// region Logger Methods
+	
+	@RequestMapping("/logger")
+	public void logger(){
+		logger.error("logger test");
+	}
+	
+	// endregion Logger Methods
 
 }

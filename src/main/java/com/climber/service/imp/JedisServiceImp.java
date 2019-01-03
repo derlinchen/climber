@@ -7,14 +7,13 @@ import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
-import com.climber.controller.SysController;
 import com.climber.service.JedisService;
 import com.climber.utils.LoggerUtils;
 
 @Service("jedisService ")
 public class JedisServiceImp implements JedisService {
 
-	private static Logger logger = LoggerUtils.getLogger(SysController.class);
+	private static Logger logger = LoggerUtils.getLogger(JedisServiceImp.class);
 	
 	@Autowired
 	private JedisPool jedisPool;

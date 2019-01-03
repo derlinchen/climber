@@ -168,7 +168,7 @@ public class PdmParser {
 	}
 
 	public void printAllTables(List<Table> allTables) {
-		System.out.println(allTables.size());
+		System.out.println("总共有：" + allTables.size() + "张表");
 		for (Table table : allTables) {
 			System.out.println("--------------------------------------------------------------------------");
 			System.out.println("表:" + table.getTableName() + table.getTableCode());
